@@ -1,0 +1,33 @@
+.container{
+    width: 100vw;
+    height: 100vh;
+    background-image: url(../../../assets/background/pexels-pixabay-531321.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.container-elementos{
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.container-temperatura{
+    color: white;
+    margin-top: 8rem;
+    margin-left: 4rem;
+}
+.container-buscador{
+    margin-bottom: 9rem;
+}
+.input-buscador{
+    width: 25rem;
+    height: 1.5rem;
+    
+}
+.container-otrosDatos{
+    color: white;
+    margin-top: 8rem;
+    margin-right: 4.5rem;
+}
