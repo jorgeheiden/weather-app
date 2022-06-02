@@ -1,4 +1,6 @@
 .container{
+    display: flex;
+    flex-direction: column;
     width: 100vw;
     height: 100vh;
     background-image: url(../../../assets/background/pexels-pixabay-531321.jpg);
@@ -8,6 +10,7 @@
 }
 .container-elementos{
     width: 100vw;
+    height: 80vh;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -15,19 +18,81 @@
 }
 .container-temperatura{
     color: white;
-    margin-top: 8rem;
+    margin-bottom: 6rem;
     margin-left: 4rem;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 600;
+}
+.icono-clima-temperatura{
+    width: 3rem;
+    height: 3rem;
 }
 .container-buscador{
-    margin-bottom: 9rem;
+    margin-bottom: 25rem;
+}
+.container-buscador-elementos{
+    display: flex;
+    align-items: center;
 }
 .input-buscador{
-    width: 25rem;
+    width: 28rem;
     height: 1.5rem;
-    
+    border-radius: 4px;
+    border: 1px solid rgb(61, 109, 61);
+    padding-left: 2rem;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 600;
+    font-size: 1.2rem;
+    opacity: 0.6;
+}
+.input-buscador:focus{
+    background-color: white;
+    opacity: 1;
+}
+.boton-buscador{
+    background-image: url(../../../assets/icono-buscador/search-icon-transparent-white-1074497.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: transparent;
+    margin-left: 0.5rem;
+    width: 1.8rem;
+    height: 1.8rem;
+    border: none;
+    border-bottom: 1px solid white;
+}
+.boton-buscador:active{
+    transform: scale(0.9);
 }
 .container-otrosDatos{
     color: white;
-    margin-top: 8rem;
+    margin-top: 1rem;
     margin-right: 4.5rem;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 600;
+}
+.otrosDatos-titulo{
+    font-size: 1rem;
+    font-weight: 300;
+    margin: 0;
+    margin-bottom: 0.5rem;
+}
+.otrosDatos-dato{
+    font-size: 1.7rem;
+    margin: 0;
+    margin-bottom: 1.2rem;
+    font-weight: 600;
+}
+.container-clima-extendido{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: white;
+    margin: 0 15.5rem 0 15rem;
+    color: white;
+    background-color: transparent;
+}
+.icono-clima-extendido{
+ width: 2rem;
+ height: 2rem;
 }
