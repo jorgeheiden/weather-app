@@ -89,10 +89,21 @@
     justify-content: space-between;
     background-color: white;
     margin: 0 15.5rem 0 15rem;
-    color: white;
+    color: rgb(255, 255, 255);
     background-color: transparent;
 }
 .icono-clima-extendido{
  width: 2rem;
  height: 2rem;
+}
+
+.card-clima-extendido{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 15px 25px rgba(129, 124, 124, 0.3);
+    background-color: rgba(105, 109, 133, 0.247);
+    border-radius: 10px;
+    width: 10rem;
+    border: 1px solid rgba(129, 123, 123, 0.212);
 }
