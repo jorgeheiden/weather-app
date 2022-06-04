@@ -18,7 +18,7 @@ export class PrincipalComponent implements OnInit {
   buscar(ciudad:any){
     console.log(ciudad)
     this.weatherService.Ubicacion(ciudad).subscribe((data) =>{
-      console.log(data[0])
+      console.log(data)
     })
     
   }
