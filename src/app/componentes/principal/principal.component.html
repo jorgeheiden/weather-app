@@ -9,8 +9,8 @@
     </div>
     <div class="container-buscador">
       <div class="container-buscador-elementos">
-        <input class="input-buscador" type="text" placeholder="El tiempo en..." />
-        <button class="boton-buscador"></button>
+        <input class="input-buscador" type="text" placeholder="El tiempo en..." [formControl]="inputSearch" />
+        <button class="boton-buscador" (click)="buscar(inputSearch.value)" ></button>
       </div>
     </div>
     <div class="container-otrosDatos">
