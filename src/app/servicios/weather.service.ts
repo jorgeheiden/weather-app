@@ -13,14 +13,16 @@ export class WeatherService {
 
   constructor(private http: HttpClient) { }
 
-  obtenerClima(url:any): Observable<any>{
+  obtenerClima(lugar:any): Observable<any>{
+    return this.http.get<any>(`${environment.climaApi.url}${lugar.lat}&lon=${lugar.lon}${environment.climaApi.key}&units=metric`)
+  }
+  obtenerClimaPredeterminado(url:any): Observable<any>{
     return this.http.get<any>(url)
   }
-
   
   Ubicacion(dato:any):Observable<any>{
     //Se concatenan las distintas partes de la url de la API
-    return this.http.get<any>(`${this.apiUrl}direct?q=${dato},buenos%20aires,ar&limit=5${environment.geoApi.key}`)
+    return this.http.get<any>(`${environment.geoApi.url}${dato}${'&limit=5'}${environment.geoApi.key}`)
    
     
   }
