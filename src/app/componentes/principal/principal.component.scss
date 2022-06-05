@@ -1,149 +1,241 @@
-.container{
-    display: flex;
-    flex-direction: column;
-    width: 100vw;
-    height: 100vh;
-    background-image: url(../../../assets/background/pexels-pixabay-531321.jpg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  background-image: url(../../../assets/background/pexels-pixabay-531321.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
-.container-elementos{
-    width: 100vw;
-    height: 80vh;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+.container-elementos {
+  width: 100vw;
+  height: 75vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
-.container-temperatura{
-    color: white;
-    margin-bottom: 6rem;
-    margin-left: 4rem;
-    font-family: 'Roboto Mono', monospace;
-    font-weight: 600;
+.container-temperatura {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  height: 100%;
+  color: white;
+  font-family: "Roboto Mono", monospace;
+  font-weight: 600;
 }
-.icono-clima-temperatura{
-    width: 3rem;
-    height: 3rem;
+.container-temperatura-elementos {
+  margin: 3rem 0 0 3rem;
 }
-.container-buscador{
-    margin-bottom: 3rem;
+.icono-clima-temperatura {
+  width: 3rem;
+  height: 3rem;
 }
-.container-buscador-elementos{
-    display: flex;
-    
+.temperatura {
+  font-size: 3rem;
+  margin-top: 1rem;
+  margin-bottom: 0;
 }
-.input-buscador{
-    width: 28rem;
-    height: 1.5rem;
-    border-radius: 4px;
-    border: 1px solid rgb(61, 109, 61);
-    padding-left: 2.5rem;
-    font-family: 'Roboto Mono', monospace;
-    font-weight: 600;
-    font-size: 1.2rem;
-    opacity: 0.6;
+.ciudad {
+  font-size: 1.8rem;
+  margin-bottom: 0;
 }
-.input-buscador:focus{
-    background-color: white;
-    opacity: 1;
+.container-buscador {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  height: 100%;
 }
-.boton-buscador{
-    background-image: url(../../../assets/icono-buscador/search-icon-transparent-white-1074497.png);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-color: transparent;
-    margin-left: 0.5rem;
-    width: 1.8rem;
-    height: 1.8rem;
-    border: none;
-    border-bottom: 1px solid white;
+.container-buscador-elementos {
+  margin-top: 2rem;
+  width: 80%;
+  display: flex;
 }
-.boton-buscador:active{
-    transform: scale(0.9);
+.input-buscador {
+  width: 100%;
+  height: 1.5rem;
+  border-radius: 4px;
+  border: 1px solid rgb(61, 109, 61);
+  padding-left: 2.5rem;
+  font-family: "Roboto Mono", monospace;
+  font-weight: 600;
+  font-size: 1.2rem;
+  opacity: 0.6;
 }
-.div-resultados-buscador ul{
-    color: white;
-    margin: 0;
+.input-buscador:focus {
+  background-color: white;
+  opacity: 1;
 }
-.div-resultados-buscador li{
-    list-style: none;
-    font-family: 'Roboto Mono', monospace;
-    font-size: 1.1rem;
-    font-weight: 600;
-    padding: 10px 0 10px 0;
-    box-shadow: 0 15px 25px rgba(129, 124, 124, 0.3);
-    background-color: rgba(105, 109, 133, 0.247);
-    cursor: pointer;
+.boton-buscador {
+  background-image: url(../../../assets/icono-buscador/search-icon-transparent-white-1074497.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: transparent;
+  margin-left: 0.5rem;
+  width: 1.8rem;
+  height: 1.8rem;
+  border: none;
+  border-bottom: 1px solid white;
 }
-.div-resultados-buscador li:hover{
-    background-color: rgba(105, 109, 133, 0.637);
+.boton-buscador:active {
+  transform: scale(0.9);
 }
-.div-resultados-buscador li:active{
-    transform: scale(0.9);
+.div-resultados-buscador {
+  width: 80%;
+  position: relative;
+  z-index: 10;
 }
-.div-resultados-buscador{
-    height: 20rem;
-    width: 30rem;
-    overflow-y: hidden;
+.div-resultados-buscador ul {
+  color: white;
+  margin: 0;
+  padding: 0;
 }
-.container-otrosDatos{
-    color: white;
-    margin-top: 1rem;
-    margin-right: 4.5rem;
-    font-family: 'Roboto Mono', monospace;
-    font-weight: 600;
+.div-resultados-buscador li {
+  list-style: none;
+  font-family: "Roboto Mono", monospace;
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 10px 0 10px 20px;
+  box-shadow: 0 15px 25px rgba(129, 124, 124, 0.3);
+  background-color: rgba(105, 109, 133, 0.247);
+  cursor: pointer;
 }
-.otrosDatos-titulo{
-    font-size: 1rem;
-    font-weight: 300;
-    margin: 0;
-    margin-bottom: 0.5rem;
+.div-resultados-buscador li:hover {
+  background-color: rgba(105, 109, 133, 0.637);
 }
-.otrosDatos-dato{
-    font-size: 1.7rem;
-    margin: 0;
-    margin-bottom: 1.2rem;
-    font-weight: 600;
-}
-.container-clima-extendido{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    background-color: white;
-    margin: 0 15.5rem 0 15rem;
-    color: rgb(255, 255, 255);
-    background-color: transparent;
-}
-.icono-clima-extendido{
- width: 2rem;
- height: 2rem;
+.div-resultados-buscador li:active {
+  transform: scale(0.9);
 }
 
-.card-clima-extendido{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    box-shadow: 0 15px 25px rgba(129, 124, 124, 0.3);
-    background-color: rgba(105, 109, 133, 0.247);
-    border-radius: 10px;
-    width: 10rem;
-    border-top: 1px solid rgba(133, 128, 128, 0.699);
-    border-left: 1px solid rgba(133, 128, 128, 0.699);
-    margin-bottom: 0.5rem;
-    backdrop-filter: blur(1px);
+.container-otrosDatos {
+  width: 25%;
+  height: 100%;
+  color: white;
+  font-family: "Roboto Mono", monospace;
+  font-weight: 600;
 }
-.clima-extendido-dias{
-    font-family: 'Roboto Mono', monospace;
-    font-size: 1.4rem;
+.container-otrosDatos-elementos {
+  margin: 3rem 0 0 4rem;
+}
+.otrosDatos-titulo {
+  font-size: 1rem;
+  font-weight: 300;
+  margin: 0;
+  margin-bottom: 0.5rem;
+}
+.otrosDatos-dato {
+  font-size: 1.7rem;
+  margin: 0;
+  margin-bottom: 1.2rem;
+  font-weight: 600;
+}
+.container-clima-extendido {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 100vw;
+  height: 25vh;
+  color: rgb(255, 255, 255);
+}
+.icono-clima-extendido {
+  width: 2rem;
+  height: 2rem;
+}
+
+.card-clima-extendido {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 15px 25px rgba(129, 124, 124, 0.3);
+  background-color: rgba(105, 109, 133, 0.247);
+  border-radius: 10px;
+  width: 13%;
+  height: 90%;
+  border-top: 1px solid rgba(133, 128, 128, 0.699);
+  border-left: 1px solid rgba(133, 128, 128, 0.699);
+  backdrop-filter: blur(1px);
+}
+.clima-extendido-dias {
+  font-family: "Roboto Mono", monospace;
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 0.8rem;
+}
+.clima-extendido-temp {
+  font-size: 1.2rem;
+  font-family: "Roboto Mono", monospace;
+  margin-top: 0.5rem;
+  font-weight: 600;
+}
+
+@media screen and (max-width: 600px) {
+  .container-elementos {
+    flex-direction: column;
+  }
+  .container-buscador {
+    width: 100vw;
+    height: 10vh;
+    order: -1;
+  }
+  .container-buscador-elementos {
+    margin-top: 0.5rem;
+  }
+  .container-temperatura {
+    width: 100vw;
+    height: 35vh;
+  }
+  .container-temperatura-elementos {
+    margin: 0 0 0 3rem;
+  }
+  .temperatura {
+    font-size: 2.2rem;
+    margin-top: 0.1rem;
+  }
+  .ciudad {
+    font-size: 1.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+  }
+  .container-otrosDatos {
+    width: 100vw;
+    height: 35vh;
+  }
+  .container-otrosDatos-elementos {
+    margin: 0 0 0 3rem;
+  }
+  .otrosDatos-titulo {
+    font-size: 1.1rem;
+    font-weight: 300;
+    margin-bottom: 0;
+  }
+  .otrosDatos-dato {
+    font-size: 1.7rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  .container-clima-extendido {
+    width: 100vw;
+    height: 20vh;
+  }
+  .container-clima-extendido {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100vw;
+    height: 25vh;
+    color: rgb(255, 255, 255);
+  }
+  .card-clima-extendido {
+    width: 30%;
+    height: 90%;
+  }
+  .clima-extendido-dias {
+    font-family: "Roboto Mono", monospace;
+    font-size: 1rem;
     font-weight: 500;
     margin-bottom: 0.8rem;
-}
-.clima-extendido-temp{
-    font-size: 1.2rem;
-    font-family: 'Roboto Mono', monospace;
-    margin-top: 0.5rem;
-    font-weight: 600;
+  }
 }

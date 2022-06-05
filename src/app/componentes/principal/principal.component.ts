@@ -51,14 +51,14 @@ export class PrincipalComponent implements OnInit {
     state: 'Buenos aires',
     country: 'AR',
   };
-  constructor(private weatherService: WeatherService) {}
+  constructor(private weatherService: WeatherService) { }
 
   ngOnInit(): void {
     this.datosPredeterminados('https://api.openweathermap.org/data/2.5/onecall?lat=-34.8548948&lon=-58.525839&appid=bd9c22a52cd4798f4a301517813a7d2a&units=metric')
   }
 
-  datosPredeterminados(d:any){
-    this.weatherService.obtenerClimaPredeterminado(d).subscribe((data)=>{
+  datosPredeterminados(d: any) {
+    this.weatherService.obtenerClimaPredeterminado(d).subscribe((data) => {
       console.log(data)
       this.apiClima = data;
       this.dia1 = data.daily[0];

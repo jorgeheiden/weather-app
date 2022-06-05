@@ -1,52 +1,116 @@
 <div class="container">
   <div class="container-elementos">
     <div class="container-temperatura">
-      <img class="icono-clima-temperatura" src="../../../assets/icono-clima/clipart1023865.png" alt="">
-      <h1 style="font-size: 3rem;margin-top: 1rem;margin-bottom: 0;">{{apiClima.current.temp | number: '1.0-0'}}°C</h1>
-      <h1 style="font-size: 1.8rem; margin-bottom: 0;">{{apiGeo.name}}</h1>
-      <h2 style="font-size: 1.5rem; margin-top: 0.5rem; ">{{apiGeo.state}}, {{apiGeo.country}}  
-      </h2>
+      <div class="container-temperatura-elementos">
+        <img
+          class="icono-clima-temperatura"
+          src="../../../assets/icono-clima/clipart1023865.png"
+          alt=""
+        />
+        <h1 class="temperatura">
+          {{ apiClima.current.temp | number: "1.0-0" }}°C
+        </h1>
+        <h1 class="ciudad">{{ apiGeo.name }}</h1>
+        <h2
+          class="provincia-pais"
+          style="font-size: 1.5rem; margin-top: 0.5rem"
+        >
+          {{ apiGeo.state }}, {{ apiGeo.country }}
+        </h2>
+      </div>
     </div>
     <div class="container-buscador">
       <div class="container-buscador-elementos">
-        <input  class="input-buscador" type="text" placeholder="El tiempo en..." [formControl]="inputSearch" />
-        <button class="boton-buscador" (click)="buscar(inputSearch.value)" ></button>
+        <input
+          class="input-buscador"
+          type="text"
+          placeholder="El tiempo en..."
+          [formControl]="inputSearch"
+        />
+        <button
+          class="boton-buscador"
+          (click)="buscar(inputSearch.value)"
+        ></button>
       </div>
       <div class="div-resultados-buscador">
-        <ul *ngFor="let resultado of resultadosBusqueda" >
-          <li (click)="ubicacionSeleccionada(resultado)" >{{resultado.name}}, {{resultado.state}}, {{resultado.country}}</li>
+        <ul *ngFor="let resultado of resultadosBusqueda">
+          <li (click)="ubicacionSeleccionada(resultado)">
+            {{ resultado.name }}, {{ resultado.state }}, {{ resultado.country }}
+          </li>
         </ul>
       </div>
     </div>
     <div class="container-otrosDatos">
-      <p class="otrosDatos-titulo" >Humedad</p>
-      <p class="otrosDatos-dato" >{{apiClima.current.humidity}} %</p>
-      <p class="otrosDatos-titulo">Viento</p>
-      <p class="otrosDatos-dato">{{apiClima.current.wind_speed}} km/h</p>
-      <p class="otrosDatos-titulo">Presion Atmosferica</p>
-      <p class="otrosDatos-dato">{{apiClima.current.pressure}} hPa</p>
+      <div class="container-otrosDatos-elementos">
+        <p class="otrosDatos-titulo">Humedad</p>
+        <p class="otrosDatos-dato">{{ apiClima.current.humidity }} %</p>
+        <p class="otrosDatos-titulo">Viento</p>
+        <p class="otrosDatos-dato">{{ apiClima.current.wind_speed }} km/h</p>
+        <p class="otrosDatos-titulo">Presion Atmosferica</p>
+        <p class="otrosDatos-dato">{{ apiClima.current.pressure }} hPa</p>
+      </div>
     </div>
   </div>
   <div class="container-clima-extendido">
     <div class="card-clima-extendido">
-      <p class="clima-extendido-dias" >{{dia1.dt*1000 | date :'EEEE' | titlecase}}</p>
-      <img class="icono-clima-extendido" src="../../../assets/icono-clima/clipart1023865.png" alt="">
-      <p class="clima-extendido-temp" >{{dia1.temp.min | number: '1.0-0'}}/{{dia1.temp.max | number: '1.0-0'}}</p>
+      <p class="clima-extendido-dias">
+        {{ dia1.dt * 1000 | date: "EEEE" | titlecase }}
+      </p>
+      <img
+        class="icono-clima-extendido"
+        src="../../../assets/icono-clima/clipart1023865.png"
+        alt=""
+      />
+      <p class="clima-extendido-temp">
+        {{ dia1.temp.min | number: "1.0-0" }}/{{
+          dia1.temp.max | number: "1.0-0"
+        }}
+      </p>
     </div>
     <div class="card-clima-extendido">
-      <p class="clima-extendido-dias" >{{dia2.dt*1000 | date :'EEEE' | titlecase}}</p>
-      <img class="icono-clima-extendido" src="../../../assets/icono-clima/clipart1023865.png" alt="">
-      <p class="clima-extendido-temp" >{{dia2.temp.min | number: '1.0-0'}}/{{dia1.temp.max | number: '1.0-0'}}</p>
+      <p class="clima-extendido-dias">
+        {{ dia2.dt * 1000 | date: "EEEE" | titlecase }}
+      </p>
+      <img
+        class="icono-clima-extendido"
+        src="../../../assets/icono-clima/clipart1023865.png"
+        alt=""
+      />
+      <p class="clima-extendido-temp">
+        {{ dia2.temp.min | number: "1.0-0" }}/{{
+          dia1.temp.max | number: "1.0-0"
+        }}
+      </p>
     </div>
     <div class="card-clima-extendido">
-      <p class="clima-extendido-dias" >{{dia3.dt*1000 | date :'EEEE' | titlecase}}</p>
-      <img class="icono-clima-extendido" src="../../../assets/icono-clima/clipart1023865.png" alt="">
-      <p class="clima-extendido-temp" >{{dia3.temp.min | number: '1.0-0'}}/{{dia1.temp.max | number: '1.0-0'}}</p>
+      <p class="clima-extendido-dias">
+        {{ dia3.dt * 1000 | date: "EEEE" | titlecase }}
+      </p>
+      <img
+        class="icono-clima-extendido"
+        src="../../../assets/icono-clima/clipart1023865.png"
+        alt=""
+      />
+      <p class="clima-extendido-temp">
+        {{ dia3.temp.min | number: "1.0-0" }}/{{
+          dia1.temp.max | number: "1.0-0"
+        }}
+      </p>
     </div>
     <div class="card-clima-extendido">
-      <p class="clima-extendido-dias" >{{dia4.dt*1000 | date :'EEEE' | titlecase}}</p>
-      <img class="icono-clima-extendido" src="../../../assets/icono-clima/clipart1023865.png" alt="">
-      <p class="clima-extendido-temp" >{{dia4.temp.min | number: '1.0-0'}}/{{dia1.temp.max | number: '1.0-0'}}</p>
+      <p class="clima-extendido-dias">
+        {{ dia4.dt * 1000 | date: "EEEE" | titlecase }}
+      </p>
+      <img
+        class="icono-clima-extendido"
+        src="../../../assets/icono-clima/clipart1023865.png"
+        alt=""
+      />
+      <p class="clima-extendido-temp">
+        {{ dia4.temp.min | number: "1.0-0" }}/{{
+          dia1.temp.max | number: "1.0-0"
+        }}
+      </p>
     </div>
   </div>
 </div>
