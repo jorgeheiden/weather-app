@@ -2,35 +2,21 @@
   <div class="container-elementos">
     <div class="container-temperatura">
       <div class="container-temperatura-elementos">
-        <img
-          class="icono-clima-temperatura"
-          src="../../../assets/icono-clima/clipart1023865.png"
-          alt=""
-        />
+        <img class="icono-clima-temperatura" src="../../../assets/icono-clima/clipart1023865.png" alt="" />
         <h1 class="temperatura">
           {{ apiClima.current.temp | number: "1.0-0" }}°C
         </h1>
         <h1 class="ciudad">{{ apiGeo.name }}</h1>
-        <h2
-          class="provincia-pais"
-          style="font-size: 1.5rem; margin-top: 0.5rem"
-        >
+        <h2 class="provincia-pais" style="font-size: 1.5rem; margin-top: 0.5rem">
           {{ apiGeo.state }}, {{ apiGeo.country }}
         </h2>
       </div>
     </div>
     <div class="container-buscador">
       <div class="container-buscador-elementos">
-        <input
-          class="input-buscador"
-          type="text"
-          placeholder="El tiempo en..."
-          [formControl]="inputSearch"
-        />
-        <button
-          class="boton-buscador"
-          (click)="buscar(inputSearch.value)"
-        ></button>
+        <input (keyup.enter)="buscar(inputSearch.value)" class="input-buscador" type="text" placeholder="El tiempo en..." [formControl]="inputSearch" />
+        <button class="boton-buscador" (click)="buscar(inputSearch.value)"></button>
+        <button class="boton-localizacion" (click)="obtenerGeolocalizacion()" ></button>
       </div>
       <div class="div-resultados-buscador">
         <ul *ngFor="let resultado of resultadosBusqueda">
@@ -56,14 +42,10 @@
       <p class="clima-extendido-dias">
         {{ dia1.dt * 1000 | date: "EEEE" | titlecase }}
       </p>
-      <img
-        class="icono-clima-extendido"
-        src="../../../assets/icono-clima/clipart1023865.png"
-        alt=""
-      />
+      <img class="icono-clima-extendido" src="../../../assets/icono-clima/clipart1023865.png" alt="" />
       <p class="clima-extendido-temp">
         {{ dia1.temp.min | number: "1.0-0" }}/{{
-          dia1.temp.max | number: "1.0-0"
+        dia1.temp.max | number: "1.0-0"
         }}
       </p>
     </div>
@@ -71,14 +53,10 @@
       <p class="clima-extendido-dias">
         {{ dia2.dt * 1000 | date: "EEEE" | titlecase }}
       </p>
-      <img
-        class="icono-clima-extendido"
-        src="../../../assets/icono-clima/clipart1023865.png"
-        alt=""
-      />
+      <img class="icono-clima-extendido" src="../../../assets/icono-clima/clipart1023865.png" alt="" />
       <p class="clima-extendido-temp">
         {{ dia2.temp.min | number: "1.0-0" }}/{{
-          dia1.temp.max | number: "1.0-0"
+        dia2.temp.max | number: "1.0-0"
         }}
       </p>
     </div>
@@ -86,14 +64,10 @@
       <p class="clima-extendido-dias">
         {{ dia3.dt * 1000 | date: "EEEE" | titlecase }}
       </p>
-      <img
-        class="icono-clima-extendido"
-        src="../../../assets/icono-clima/clipart1023865.png"
-        alt=""
-      />
+      <img class="icono-clima-extendido" src="../../../assets/icono-clima/clipart1023865.png" alt="" />
       <p class="clima-extendido-temp">
         {{ dia3.temp.min | number: "1.0-0" }}/{{
-          dia1.temp.max | number: "1.0-0"
+        dia3.temp.max | number: "1.0-0"
         }}
       </p>
     </div>
@@ -101,14 +75,10 @@
       <p class="clima-extendido-dias">
         {{ dia4.dt * 1000 | date: "EEEE" | titlecase }}
       </p>
-      <img
-        class="icono-clima-extendido"
-        src="../../../assets/icono-clima/clipart1023865.png"
-        alt=""
-      />
+      <img class="icono-clima-extendido" src="../../../assets/icono-clima/clipart1023865.png" alt="" />
       <p class="clima-extendido-temp">
         {{ dia4.temp.min | number: "1.0-0" }}/{{
-          dia1.temp.max | number: "1.0-0"
+        dia4.temp.max | number: "1.0-0"
         }}
       </p>
     </div>

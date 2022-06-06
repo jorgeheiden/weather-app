@@ -82,6 +82,21 @@
 .boton-buscador:active {
   transform: scale(0.9);
 }
+.boton-localizacion{
+  background-image: url(../../../assets/icono-localizacion/localizacion.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: transparent;
+  width: 1.8rem;
+  height: 1.8rem;
+  border: none;
+  margin-left: 1rem;
+  border-bottom: 1px solid white; 
+}
+.boton-localizacion:active{
+  transform: scale(0.9);
+}
 .div-resultados-buscador {
   width: 80%;
   position: relative;
@@ -99,11 +114,11 @@
   font-weight: 600;
   padding: 10px 0 10px 20px;
   box-shadow: 0 15px 25px rgba(129, 124, 124, 0.3);
-  background-color: rgba(105, 109, 133, 0.247);
+  background-color: rgba(105, 109, 133, 0.342);
   cursor: pointer;
 }
 .div-resultados-buscador li:hover {
-  background-color: rgba(105, 109, 133, 0.637);
+  background-color: rgba(105, 109, 133, 0.274);
 }
 .div-resultados-buscador li:active {
   transform: scale(0.9);
@@ -135,7 +150,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  align-items: center;
+ 
   width: 100vw;
   height: 25vh;
   color: rgb(255, 255, 255);
@@ -237,5 +252,8 @@
     font-size: 1rem;
     font-weight: 500;
     margin-bottom: 0.8rem;
+  }
+  .div-resultados-buscador li{
+    background-color: rgba(105, 109, 133, 0.801);
   }
 }
