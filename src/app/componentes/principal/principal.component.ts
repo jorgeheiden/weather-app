@@ -47,6 +47,7 @@ export class PrincipalComponent implements OnInit {
       pressure: '',
     },
   };
+  
   apiGeo = {
     name: 'Ezeiza',
     state: 'Buenos aires',
@@ -119,8 +120,7 @@ export class PrincipalComponent implements OnInit {
 
       //Obtiene el Nombre de la ubicacion con la lat y lon y lo aplica a la vista
       this.weatherService.ubicacionPorCoordenadas(coords).subscribe((data) => {
-        this.apiGeo = data[0];
-        console.log(data[0]);
+        this.apiGeo = data[0]
       });
     } catch (error) {
       console.log(error);
