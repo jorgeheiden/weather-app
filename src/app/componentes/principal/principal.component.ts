@@ -53,32 +53,35 @@ export class PrincipalComponent implements OnInit {
     country: 'AR',
   };
   iconos = {
-    soleado: '../../../assets/icono-clima/sol.png'
-  }
-  constructor(private weatherService: WeatherService, private geolocalizacionservice: GeolocalizacionService) {
-    
-
-   }
+    soleado: '../../../assets/icono-clima/sol.png',
+  };
+  constructor(
+    private weatherService: WeatherService,
+    private geolocalizacionservice: GeolocalizacionService
+  ) {}
 
   ngOnInit(): void {
     //Se llama a la funcion datos predeterminados y se le pasa como parametro un lugar
-   this.datosPredeterminados('https://api.openweathermap.org/data/2.5/onecall?lat=-34.8548948&lon=-58.525839&appid=bd9c22a52cd4798f4a301517813a7d2a&units=metric')
+    this.datosPredeterminados(
+      'https://api.openweathermap.org/data/2.5/onecall?lat=-34.8548948&lon=-58.525839&appid=bd9c22a52cd4798f4a301517813a7d2a&units=metric'
+    );
   }
+
   //Funcion que asinga datos del clima predeterminados al cargar la pagina
   datosPredeterminados(d: any) {
     this.weatherService.obtenerClimaPredeterminado(d).subscribe((data) => {
-      
       this.apiClima = data;
       this.dia1 = data.daily[0];
       this.dia2 = data.daily[1];
       this.dia3 = data.daily[2];
       this.dia4 = data.daily[3];
-    })
+    });
   }
   //Recibe los datos del input y obtiene un objeto con los datos del lugar(nombre, lat, lon)
   buscar(inputSearch: any) {
     this.weatherService.Ubicacion(inputSearch).subscribe((data) => {
       this.resultadosBusqueda = data;
+      console.log(data)
     });
   }
   //Recibe la ubicacion seleccionada de los resultados de busqueda
@@ -95,31 +98,32 @@ export class PrincipalComponent implements OnInit {
       this.resultadosBusqueda = [];
     });
   }
-  
 
- //Funcion que obtiene los datos de geolocalizacion (longitud y latitud) 
- //utiliza el servicio geolocalizacion.service
-  async obtenerGeolocalizacion():Promise<void>{
+  //Funcion que obtiene los datos de geolocalizacion (longitud y latitud)
+  //utiliza el servicio geolocalizacion.service
+  async obtenerGeolocalizacion(): Promise<void> {
     try {
-      const {coords} = await this.geolocalizacionservice.obtenerPosicionActual()
-      console.log(coords)
-      console.log(coords.latitude)
+      const { coords } = await this.geolocalizacionservice.obtenerPosicionActual();
+
       //Se obtiene los datos del clima pasando como parametros los datos de geolocalizacion
-      //obtenidos latitud y longitud y se asignan a la vista 
-      this.weatherService.obtenerClimaPorGeolocalizacion(coords).subscribe((data)=>{
-        console.log(data)
-      this.apiClima = data;
-      this.dia1 = data.daily[0];
-      this.dia2 = data.daily[1];
-      this.dia3 = data.daily[2];
-      this.dia4 = data.daily[3];
-      })
+      //obtenidos latitud y longitud y se asignan a la vista
+      this.weatherService
+        .obtenerClimaPorGeolocalizacion(coords)
+        .subscribe((data) => {
+          this.apiClima = data;
+          this.dia1 = data.daily[0];
+          this.dia2 = data.daily[1];
+          this.dia3 = data.daily[2];
+          this.dia4 = data.daily[3];
+        });
+
+      //Obtiene el Nombre de la ubicacion con la lat y lon y lo aplica a la vista
+      this.weatherService.ubicacionPorCoordenadas(coords).subscribe((data) => {
+        this.apiGeo = data[0];
+        console.log(data[0]);
+      });
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   }
-  
-
 }
-
-
