@@ -2,7 +2,7 @@
   <div class="container-elementos">
     <div class="container-temperatura">
       <div class="container-temperatura-elementos">
-        <img class="icono-clima-temperatura" src="../../../assets/icono-clima/parcialmente nublado.png" alt="" />
+        <img class="icono-clima-temperatura" [src]="iconoHoy" alt="" />
         <h1 class="temperatura">
           {{ apiClima.current.temp | number: "1.0-0" }}°C
         </h1>

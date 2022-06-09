@@ -11,6 +11,7 @@ import { WeatherService } from 'src/app/servicios/weather.service';
 export class PrincipalComponent implements OnInit {
   inputSearch = new FormControl('');
   resultadosBusqueda: any;
+  iconoHoy:any
   dia1 = {
     dt: 0,
     temp: {
@@ -45,6 +46,9 @@ export class PrincipalComponent implements OnInit {
       humidity: '',
       wind_speed: '',
       pressure: '',
+      weather:[
+        { icon: "a"}
+      ]
     },
   };
   
@@ -53,9 +57,7 @@ export class PrincipalComponent implements OnInit {
     state: 'Buenos aires',
     country: 'AR',
   };
-  iconos = {
-    soleado: '../../../assets/icono-clima/sol.png',
-  };
+  
   constructor(
     private weatherService: WeatherService,
     private geolocalizacionservice: GeolocalizacionService
@@ -66,12 +68,14 @@ export class PrincipalComponent implements OnInit {
     this.datosPredeterminados(
       'https://api.openweathermap.org/data/2.5/onecall?lat=-34.8548948&lon=-58.525839&appid=bd9c22a52cd4798f4a301517813a7d2a&units=metric'
     );
+    
   }
 
   //Funcion que asinga datos del clima predeterminados al cargar la pagina
   datosPredeterminados(d: any) {
     this.weatherService.obtenerClimaPredeterminado(d).subscribe((data) => {
       this.apiClima = data;
+      this.asignacionDeIconos(this.apiClima)
       this.dia1 = data.daily[0];
       this.dia2 = data.daily[1];
       this.dia3 = data.daily[2];
@@ -90,7 +94,6 @@ export class PrincipalComponent implements OnInit {
   ubicacionSeleccionada(lugar: any) {
     this.weatherService.obtenerClima(lugar).subscribe((data) => {
       this.apiGeo = lugar;
-
       this.apiClima = data;
       this.dia1 = data.daily[0];
       this.dia2 = data.daily[1];
@@ -125,5 +128,50 @@ export class PrincipalComponent implements OnInit {
     } catch (error) {
       console.log(error);
     }
+  }
+
+  asignacionDeIconos(dato:any){
+    console.log(dato)
+    console.log(dato.current.weather[0].icon )
+   
+   switch(dato.current.weather[0].icon){
+     case "01d":
+     case "01n":
+       this.iconoHoy = "../../../assets/icono-clima/sol.png"
+       break
+       case "02d":
+         case"02n":
+         this.iconoHoy = "../../../assets/icono-clima/parcialmente nublado.png"
+         break
+         case "03d":
+           case "03n":
+             this.iconoHoy = "../../../assets/icono-clima/nublado.png"
+             break
+             case "04d":
+               case "04n":
+                 this.iconoHoy = "../../../assets/icono-clima/nublado.png"
+                 break
+                 case"09d":
+                 case"09n":
+                 this.iconoHoy = "../../../assets/icono-clima/lluvioso.png"
+                 break
+                 case"10d":
+                 case"10n":
+                 this.iconoHoy = "../../../assets/icono-clima/lluvioso.png"
+                 break
+                 case"11d":
+                 case"11n":
+                 this.iconoHoy ="../../../assets/icono-clima/tormenta.png" 
+                 break
+                 case"13d":
+                 case"13n":
+                 this.iconoHoy ="../../../assets/icono-clima/lluvioso.png"
+                 break
+                 case"50d":
+                 case"50n":
+                 this.iconoHoy ="../../../assets/icono-clima/nublado.png"
+                 break
+
+   }
   }
 }
