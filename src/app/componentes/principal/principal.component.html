@@ -42,7 +42,7 @@
       <p class="clima-extendido-dias">
         {{ dia1.dt * 1000 | date: "EEEE" | titlecase }}
       </p>
-      <img class="icono-clima-extendido" src="../../../assets/icono-clima/parcialmente nublado.png" alt="" />
+      <img class="icono-clima-extendido" [src]="iconoDia1" alt="" />
       <p class="clima-extendido-temp">
         {{ dia1.temp.min | number: "1.0-0" }}/{{
         dia1.temp.max | number: "1.0-0"
@@ -53,7 +53,7 @@
       <p class="clima-extendido-dias">
         {{ dia2.dt * 1000 | date: "EEEE" | titlecase }}
       </p>
-      <img class="icono-clima-extendido" src="../../../assets/icono-clima/parcialmente nublado.png" alt="" />
+      <img class="icono-clima-extendido" [src]="iconoDia2" alt="" />
       <p class="clima-extendido-temp">
         {{ dia2.temp.min | number: "1.0-0" }}/{{
         dia2.temp.max | number: "1.0-0"
@@ -64,7 +64,7 @@
       <p class="clima-extendido-dias">
         {{ dia3.dt * 1000 | date: "EEEE" | titlecase }}
       </p>
-      <img class="icono-clima-extendido" src="../../../assets/icono-clima/parcialmente nublado.png" alt="" />
+      <img class="icono-clima-extendido" [src]="iconoDia3" alt="" />
       <p class="clima-extendido-temp">
         {{ dia3.temp.min | number: "1.0-0" }}/{{
         dia3.temp.max | number: "1.0-0"
@@ -75,7 +75,7 @@
       <p class="clima-extendido-dias">
         {{ dia4.dt * 1000 | date: "EEEE" | titlecase }}
       </p>
-      <img class="icono-clima-extendido" src="../../../assets/icono-clima/parcialmente nublado.png" alt="" />
+      <img class="icono-clima-extendido" [src]="iconoDia4" alt="" />
       <p class="clima-extendido-temp">
         {{ dia4.temp.min | number: "1.0-0" }}/{{
         dia4.temp.max | number: "1.0-0"

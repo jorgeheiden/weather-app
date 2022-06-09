@@ -11,7 +11,11 @@ import { WeatherService } from 'src/app/servicios/weather.service';
 export class PrincipalComponent implements OnInit {
   inputSearch = new FormControl('');
   resultadosBusqueda: any;
-  iconoHoy:any
+  iconoHoy: any;
+  iconoDia1: any;
+  iconoDia2: any;
+  iconoDia3: any;
+  iconoDia4: any;
   dia1 = {
     dt: 0,
     temp: {
@@ -46,18 +50,15 @@ export class PrincipalComponent implements OnInit {
       humidity: '',
       wind_speed: '',
       pressure: '',
-      weather:[
-        { icon: "a"}
-      ]
     },
   };
-  
+
   apiGeo = {
     name: 'Ezeiza',
     state: 'Buenos aires',
     country: 'AR',
   };
-  
+
   constructor(
     private weatherService: WeatherService,
     private geolocalizacionservice: GeolocalizacionService
@@ -68,14 +69,13 @@ export class PrincipalComponent implements OnInit {
     this.datosPredeterminados(
       'https://api.openweathermap.org/data/2.5/onecall?lat=-34.8548948&lon=-58.525839&appid=bd9c22a52cd4798f4a301517813a7d2a&units=metric'
     );
-    
   }
 
   //Funcion que asinga datos del clima predeterminados al cargar la pagina
   datosPredeterminados(d: any) {
     this.weatherService.obtenerClimaPredeterminado(d).subscribe((data) => {
       this.apiClima = data;
-      this.asignacionDeIconos(this.apiClima)
+      this.asignacionDeIconos(this.apiClima);
       this.dia1 = data.daily[0];
       this.dia2 = data.daily[1];
       this.dia3 = data.daily[2];
@@ -86,7 +86,7 @@ export class PrincipalComponent implements OnInit {
   buscar(inputSearch: any) {
     this.weatherService.Ubicacion(inputSearch).subscribe((data) => {
       this.resultadosBusqueda = data;
-      console.log(data)
+      console.log(data);
     });
   }
   //Recibe la ubicacion seleccionada de los resultados de busqueda
@@ -107,7 +107,8 @@ export class PrincipalComponent implements OnInit {
   //utiliza el servicio geolocalizacion.service
   async obtenerGeolocalizacion(): Promise<void> {
     try {
-      const { coords } = await this.geolocalizacionservice.obtenerPosicionActual();
+      const { coords } =
+        await this.geolocalizacionservice.obtenerPosicionActual();
 
       //Se obtiene los datos del clima pasando como parametros los datos de geolocalizacion
       //obtenidos latitud y longitud y se asignan a la vista
@@ -123,55 +124,207 @@ export class PrincipalComponent implements OnInit {
 
       //Obtiene el Nombre de la ubicacion con la lat y lon y lo aplica a la vista
       this.weatherService.ubicacionPorCoordenadas(coords).subscribe((data) => {
-        this.apiGeo = data[0]
+        this.apiGeo = data[0];
       });
     } catch (error) {
       console.log(error);
     }
   }
 
-  asignacionDeIconos(dato:any){
-    console.log(dato)
-    console.log(dato.current.weather[0].icon )
-   
-   switch(dato.current.weather[0].icon){
-     case "01d":
-     case "01n":
-       this.iconoHoy = "../../../assets/icono-clima/sol.png"
-       break
-       case "02d":
-         case"02n":
-         this.iconoHoy = "../../../assets/icono-clima/parcialmente nublado.png"
-         break
-         case "03d":
-           case "03n":
-             this.iconoHoy = "../../../assets/icono-clima/nublado.png"
-             break
-             case "04d":
-               case "04n":
-                 this.iconoHoy = "../../../assets/icono-clima/nublado.png"
-                 break
-                 case"09d":
-                 case"09n":
-                 this.iconoHoy = "../../../assets/icono-clima/lluvioso.png"
-                 break
-                 case"10d":
-                 case"10n":
-                 this.iconoHoy = "../../../assets/icono-clima/lluvioso.png"
-                 break
-                 case"11d":
-                 case"11n":
-                 this.iconoHoy ="../../../assets/icono-clima/tormenta.png" 
-                 break
-                 case"13d":
-                 case"13n":
-                 this.iconoHoy ="../../../assets/icono-clima/lluvioso.png"
-                 break
-                 case"50d":
-                 case"50n":
-                 this.iconoHoy ="../../../assets/icono-clima/nublado.png"
-                 break
-
-   }
+  asignacionDeIconos(dato: any) {
+    switch (dato.current.weather[0].icon) {
+      case '01d':
+      case '01n':
+        this.iconoHoy = '../../../assets/icono-clima/sol.png';
+        break;
+      case '02d':
+      case '02n':
+        this.iconoHoy = '../../../assets/icono-clima/parcialmente nublado.png';
+        break;
+      case '03d':
+      case '03n':
+        this.iconoHoy = '../../../assets/icono-clima/nublado.png';
+        break;
+      case '04d':
+      case '04n':
+        this.iconoHoy = '../../../assets/icono-clima/parcialmente nublado.png';
+        break;
+      case '09d':
+      case '09n':
+        this.iconoHoy = '../../../assets/icono-clima/lluvioso.png';
+        break;
+      case '10d':
+      case '10n':
+        this.iconoHoy = '../../../assets/icono-clima/lluvioso.png';
+        break;
+      case '11d':
+      case '11n':
+        this.iconoHoy = '../../../assets/icono-clima/tormenta.png';
+        break;
+      case '13d':
+      case '13n':
+        this.iconoHoy = '../../../assets/icono-clima/lluvioso.png';
+        break;
+      case '50d':
+      case '50n':
+        this.iconoHoy = '../../../assets/icono-clima/nublado.png';
+        break;
+    }
+    //iconoDia1
+    switch (dato.daily[0].weather[0].icon) {
+      case '01d':
+      case '01n':
+        this.iconoDia1 = '../../../assets/icono-clima/sol.png';
+        break;
+      case '02d':
+      case '02n':
+        this.iconoDia1 = '../../../assets/icono-clima/parcialmente nublado.png';
+        break;
+      case '03d':
+      case '03n':
+        this.iconoDia1 = '../../../assets/icono-clima/nublado.png';
+        break;
+      case '04d':
+      case '04n':
+        this.iconoDia1 = '../../../assets/icono-clima/parcialmente nublado.png';
+        break;
+      case '09d':
+      case '09n':
+        this.iconoDia1 = '../../../assets/icono-clima/lluvioso.png';
+        break;
+      case '10d':
+      case '10n':
+        this.iconoDia1 = '../../../assets/icono-clima/lluvioso.png';
+        break;
+      case '11d':
+      case '11n':
+        this.iconoDia1 = '../../../assets/icono-clima/tormenta.png';
+        break;
+      case '13d':
+      case '13n':
+        this.iconoHoy = '../../../assets/icono-clima/lluvioso.png';
+        break;
+      case '50d':
+      case '50n':
+        this.iconoDia1 = '../../../assets/icono-clima/nublado.png';
+        break;
+    }
+    //iconoDia2
+    switch (dato.daily[1].weather[0].icon) {
+      case '01d':
+      case '01n':
+        this.iconoDia2 = '../../../assets/icono-clima/sol.png';
+        break;
+      case '02d':
+      case '02n':
+        this.iconoDia2 = '../../../assets/icono-clima/parcialmente nublado.png';
+        break;
+      case '03d':
+      case '03n':
+        this.iconoDia2 = '../../../assets/icono-clima/nublado.png';
+        break;
+      case '04d':
+      case '04n':
+        this.iconoDia2 = '../../../assets/icono-clima/parcialmente nublado.png';
+        break;
+      case '09d':
+      case '09n':
+        this.iconoDia2 = '../../../assets/icono-clima/lluvioso.png';
+        break;
+      case '10d':
+      case '10n':
+        this.iconoDia2 = '../../../assets/icono-clima/lluvioso.png';
+        break;
+      case '11d':
+      case '11n':
+        this.iconoDia2 = '../../../assets/icono-clima/tormenta.png';
+        break;
+      case '13d':
+      case '13n':
+        this.iconoDia3 = '../../../assets/icono-clima/lluvioso.png';
+        break;
+      case '50d':
+      case '50n':
+        this.iconoDia2 = '../../../assets/icono-clima/nublado.png';
+        break;
+    }
+    //iconoDia3
+    switch (dato.daily[2].weather[0].icon) {
+      case '01d':
+      case '01n':
+        this.iconoDia3 = '../../../assets/icono-clima/sol.png';
+        break;
+      case '02d':
+      case '02n':
+        this.iconoDia3 = '../../../assets/icono-clima/parcialmente nublado.png';
+        break;
+      case '03d':
+      case '03n':
+        this.iconoDia3 = '../../../assets/icono-clima/nublado.png';
+        break;
+      case '04d':
+      case '04n':
+        this.iconoDia3 = '../../../assets/icono-clima/parcialmente nublado.png';
+        break;
+      case '09d':
+      case '09n':
+        this.iconoDia3 = '../../../assets/icono-clima/lluvioso.png';
+        break;
+      case '10d':
+      case '10n':
+        this.iconoDia3 = '../../../assets/icono-clima/lluvioso.png';
+        break;
+      case '11d':
+      case '11n':
+        this.iconoDia3 = '../../../assets/icono-clima/tormenta.png';
+        break;
+      case '13d':
+      case '13n':
+        this.iconoDia3 = '../../../assets/icono-clima/lluvioso.png';
+        break;
+      case '50d':
+      case '50n':
+        this.iconoDia3 = '../../../assets/icono-clima/nublado.png';
+        break;
+    }
+    //iconoDia4
+    switch (dato.daily[3].weather[0].icon) {
+      case '01d':
+      case '01n':
+        this.iconoDia4 = '../../../assets/icono-clima/sol.png';
+        break;
+      case '02d':
+      case '02n':
+        this.iconoDia4 = '../../../assets/icono-clima/parcialmente nublado.png';
+        break;
+      case '03d':
+      case '03n':
+        this.iconoDia4 = '../../../assets/icono-clima/nublado.png';
+        break;
+      case '04d':
+      case '04n':
+        this.iconoDia4 = '../../../assets/icono-clima/parcialmente nublado.png';
+        break;
+      case '09d':
+      case '09n':
+        this.iconoDia4 = '../../../assets/icono-clima/lluvioso.png';
+        break;
+      case '10d':
+      case '10n':
+        this.iconoDia4 = '../../../assets/icono-clima/lluvioso.png';
+        break;
+      case '11d':
+      case '11n':
+        this.iconoDia4 = '../../../assets/icono-clima/tormenta.png';
+        break;
+      case '13d':
+      case '13n':
+        this.iconoDia4 = '../../../assets/icono-clima/lluvioso.png';
+        break;
+      case '50d':
+      case '50n':
+        this.iconoDia4 = '../../../assets/icono-clima/nublado.png';
+        break;
+    }
   }
 }
